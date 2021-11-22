@@ -13,7 +13,7 @@ function DatePicker({ changeDate }) {
   ]);
   useEffect(() => {
     changeDate(state);
-  }, [state]);
+  }, [state.startDate]);
 
   return (
     <div>
