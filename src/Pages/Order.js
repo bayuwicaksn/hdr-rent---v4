@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import DatePicker from "../Parts/DatePicker";
 import * as AiIcons from "react-icons/ai";
 import moment from "moment";
@@ -12,6 +12,8 @@ function Order() {
     let endDate = moment(state[0].endDate).format("DD-MM-YYYY");
     setDate({ startDate, endDate });
   };
+
+  const memoizedChangeDate = useCallback(changeDate, []);
 
   return (
     <div className="container mx-auto py-10 md:w-4/5 w-11/12 px-6 ">
@@ -112,7 +114,7 @@ function Order() {
                     autoComplete="off"
                   />
                 </div>
-                {showDate && <DatePicker changeDate={changeDate} />}
+                {showDate && <DatePicker changeDate={memoizedChangeDate} />}
                 <div className="flex items-center justify-start w-full">
                   <button className="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">
                     Submit
