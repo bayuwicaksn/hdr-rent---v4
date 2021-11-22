@@ -28,7 +28,6 @@ function Order() {
               </div>
             </div>
           </div>
-          ;
         </div>
         <div>
           <div className="py-12">
