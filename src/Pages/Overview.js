@@ -1,6 +1,5 @@
 import React from "react";
 import FeaturedInfo from "../Parts/FeaturedInfo";
-import * as AiIcons from "react-icons/ai";
 
 function Overview() {
   return (
