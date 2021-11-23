@@ -86,7 +86,7 @@ function Order() {
                 autoComplete="off"
               />
             </div>
-            {showDate && <DatePicker changeDate={changeDate} />}
+            {showDate && <DatePicker changeDate={memoizedChangeDate} />}
           </div>
         </div>
 
