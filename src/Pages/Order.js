@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import DatePicker from "../Parts/DatePicker";
 import * as AiIcons from "react-icons/ai";
 import moment from "moment";
@@ -14,6 +14,8 @@ function Order() {
     let endDate = moment(state[0].endDate).format("DD-MM-YYYY");
     setDate({ startDate, endDate });
   };
+
+  const memoizedChangeDate = useCallback(changeDate, []);
 
   return (
     <div>
