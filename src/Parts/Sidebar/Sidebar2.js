@@ -4,9 +4,9 @@ import * as AiIcons from "react-icons/ai";
 
 export default function Index() {
   return (
-    <div className="bg-white ">
+    <div className="absolute lg:relative w-64 h-screen shadow bg-gray-900">
       <div className="flex text-gray-800  hover:text-black focus:outline-none focus:text-black justify-between w-full p-6 items-center ">
-        <button className="flex justify-between  items-center space-x-3">
+        <button className="flex justify-between items-center space-x-3 bg-white">
           <i className="text-4xl">
             <AiIcons.AiOutlineCamera />
           </i>
