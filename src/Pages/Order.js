@@ -43,7 +43,7 @@ function Order() {
               Customer
             </label>
             <div className="w-full flex item-center my-4">
-              <div className="w-full w-2/3">
+              <div className="w-full">
                 <Search />
               </div>
               <i className="text-3xl text-white ml-4 h-12 w-12 cursor-pointer focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded flex items-center justify-center">
