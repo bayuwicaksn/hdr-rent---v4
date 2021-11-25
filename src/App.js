@@ -17,19 +17,16 @@ function App() {
         <Sidebar />
         <div className="w-full">
           <TopBar />
-          <div className="container mx-auto py-10">
-            {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
-            <div className="w-full h-full">
-              {/* Place your content here */}
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/products" component={Products} />
-                <Route path="/order" component={Order} />
-                <Route path="/tambah-produk" component={TambahProduk} />
-                <Route path="/customer" component={Customer} />
-                <Route path="/settings" component={Settings} />
-              </Switch>
-            </div>
+          <div className="p-10 2xl:px-20">
+            {/* Place your content here */}
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/products" component={Products} />
+              <Route path="/order" component={Order} />
+              <Route path="/tambah-produk" component={TambahProduk} />
+              <Route path="/customer" component={Customer} />
+              <Route path="/settings" component={Settings} />
+            </Switch>
           </div>
         </div>
       </div>

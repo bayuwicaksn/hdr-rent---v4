@@ -7,7 +7,7 @@ import * as AiIcons from "react-icons/ai";
 export default function ProdukList2() {
   return (
     <div>
-      <div className="mx-auto container bg-white dark:bg-gray-800 shadow rounded">
+      <div className="mx-auto bg-white dark:bg-gray-800 shadow rounded">
         <div className="flex flex-col lg:flex-row p-4 lg:p-8 justify-between items-start lg:items-stretch w-full">
           <Search />
           <div className="w-full lg:w-2/3 flex flex-col lg:flex-row items-start lg:items-center justify-end">

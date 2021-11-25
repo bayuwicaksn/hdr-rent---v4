@@ -2,12 +2,12 @@ import React from "react";
 
 export default function TambahProduk() {
   return (
-    <div className="container py-10">
+    <div className="">
       {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
       <div className="h-full px-10 rounded border-dashed border-2 border-gray-300">
         {/* Place your content here */}
         <div className="relative py-6 lg:py-8">
-          <div className="z-10 relative container  flex flex-col md:flex-row items-start md:items-center justify-between">
+          <div className="z-10 relative flex flex-col md:flex-row items-start md:items-center justify-between">
             <div>
               <h4 className="text-2xl font-bold leading-tight text-gray-800">
                 Tambah Produk
