@@ -24,7 +24,7 @@ const TambahProduk = () => {
         <div className="flex items-center justify-center w-full">
           <div className="bg-white rounded-md shadow overflow-y-auto w-full">
             <div className="bg-gray-100 rounded-tl-md rounded-tr-md px-4 md:px-8 md:py-4 py-7 flex items-center justify-between">
-              <p className="text-base font-semibold">Tambah Produk</p>
+              <p className="text-base font-semibold">Produk Informasi</p>
             </div>
             <div className="px-4 md:px-10 pt-6 md:pt-12 md:pb-4 pb-7">
               <div className="flex items-center justify-center">
