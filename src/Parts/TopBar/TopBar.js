@@ -7,11 +7,11 @@ const TopBar = () => {
   return (
     <div>
       <nav className="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-10">
-        <div className="hidden lg:flex w-full pr-6">
-          <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">
+        <div className=" lg:flex w-full pr-6">
+          <div className="w-1/2 h-full lg:flex items-center pl-6 pr-24">
             {/*  */}
           </div>
-          <div className="w-1/2 hidden lg:flex">
+          <div className="w-1/2 lg:flex">
             <div className="w-full flex items-center pl-8 justify-end">
               <div className="h-full w-20 flex items-center justify-center border-r border-l">
                 <div className="relative cursor-pointer text-gray-600">
@@ -138,7 +138,7 @@ const TopBar = () => {
           </div>
         </div>
         <div
-          className="text-gray-600 mr-8 visible lg:hidden relative"
+          className="text-gray-600 mr-8 visible relative"
           onClick={() => setShow(!show)}
         >
           {show ? (
