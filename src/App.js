@@ -17,7 +17,7 @@ function App() {
         <Sidebar />
         <div className="w-full">
           <TopBar />
-          <div className="container mx-auto py-10 w-11/12 px-6">
+          <div className="container mx-auto py-10">
             {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
             <div className="w-full h-full">
               {/* Place your content here */}
