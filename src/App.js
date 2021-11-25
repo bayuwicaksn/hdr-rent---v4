@@ -13,25 +13,22 @@ import TopBar from "./Parts/TopBar/TopBar";
 function App() {
   return (
     <Router>
-      <div className="w-full h-full bg-gray-200">
-        <div className="flex flex-no-wrap">
-          <Sidebar />
-          <div className="w-full">
-            <TopBar />
-            <div className="container mx-auto py-10 w-11/12 px-6">
-              {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
-              <div className="w-full h-full">
-                {/* Place your content here */}
-
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/products" component={Products} />
-                  <Route path="/order" component={Order} />
-                  <Route path="/tambah-produk" component={TambahProduk} />
-                  <Route path="/customer" component={Customer} />
-                  <Route path="/settings" component={Settings} />
-                </Switch>
-              </div>
+      <div className="flex flex-no-wrap bg-gray-200">
+        <Sidebar />
+        <div className="w-full">
+          <TopBar />
+          <div className="container mx-auto py-10 w-11/12 px-6">
+            {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
+            <div className="w-full h-full">
+              {/* Place your content here */}
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/products" component={Products} />
+                <Route path="/order" component={Order} />
+                <Route path="/tambah-produk" component={TambahProduk} />
+                <Route path="/customer" component={Customer} />
+                <Route path="/settings" component={Settings} />
+              </Switch>
             </div>
           </div>
         </div>
