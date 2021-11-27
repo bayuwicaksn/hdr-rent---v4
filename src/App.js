@@ -9,28 +9,31 @@ import TambahProduk from "./Pages/TambahProduk";
 import Customer from "./Pages/Customer";
 import Settings from "./Pages/Settings";
 import TopBar from "./Parts/TopBar/TopBar";
+import { SidebarProvider } from "./Context/SidebarContext";
 
 function App() {
   return (
-    <Router>
-      <div className="flex bg-gray-200">
-        <Sidebar />
-        <div className="w-full">
-          <TopBar />
-          <div className="p-10 2xl:px-20">
-            {/* Place your content here */}
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/products" component={Products} />
-              <Route path="/order" component={Order} />
-              <Route path="/tambah-produk" component={TambahProduk} />
-              <Route path="/customer" component={Customer} />
-              <Route path="/settings" component={Settings} />
-            </Switch>
+    <SidebarProvider>
+      <Router>
+        <div className="flex bg-gray-200">
+          <Sidebar />
+          <div className="w-full">
+            <TopBar />
+            <div className="p-10 2xl:px-20">
+              {/* Place your content here */}
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/products" component={Products} />
+                <Route path="/order" component={Order} />
+                <Route path="/tambah-produk" component={TambahProduk} />
+                <Route path="/customer" component={Customer} />
+                <Route path="/settings" component={Settings} />
+              </Switch>
+            </div>
           </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </SidebarProvider>
   );
 }
 
