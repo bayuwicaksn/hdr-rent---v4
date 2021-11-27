@@ -4,13 +4,16 @@ import {
   AiOutlineBell,
   AiOutlineComment,
   AiOutlineImport,
+  AiOutlineMenu,
   AiOutlineUser,
 } from "react-icons/ai";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { useToggleSidebar } from "../../Context/SidebarContext";
 
 const TopBar = () => {
   const dropDownRef = useRef(null);
   const [toggle, seToggle] = useState(false);
+  const toggleSidebar = useToggleSidebar();
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -33,13 +36,16 @@ const TopBar = () => {
   };
 
   return (
-    <nav className="bg-white shadow sticky top-0 h-16 z-30 px-10">
-      <div className="flex h-full justify-end items-center">
+    <nav className="bg-white shadow sticky top-0 h-16 z-30 px-5 lg:px-10">
+      <div className="flex h-full justify-between items-center">
+        <div className="text-xl cursor-pointer" onClick={toggleSidebar}>
+          <AiOutlineMenu />
+        </div>
         <div className="flex h-full items-center text-gray-500">
           <div className="w-20 flex items-center justify-center border-l h-full text-2xl">
             <div className="relative">
               <AiOutlineBell />
-              <div class="w-2 h-2 rounded-full bg-red-400 border border-white absolute top-0 right-0.5"></div>
+              <div className="w-2 h-2 rounded-full bg-red-400 border border-white absolute top-0 right-0.5"></div>
             </div>
           </div>
           <div className="w-20 flex items-center justify-center border-l h-full text-2xl">
@@ -47,7 +53,7 @@ const TopBar = () => {
           </div>
           {/* profile menu */}
           <div className="flex pl-5 items-center justify-center border-l h-full gap-x-3">
-            <div className="relative bg-green-300">
+            <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1481&q=80"
                 alt="john doe"
@@ -55,7 +61,7 @@ const TopBar = () => {
                 className="rounded-full shadow"
               />
 
-              <div class="w-2.5 h-2.5 rounded-full border bg-green-500 border-white absolute top-0 -right-1"></div>
+              <div className="w-2.5 h-2.5 rounded-full border bg-green-500 border-white absolute top-0 -right-1"></div>
             </div>
             <div
               className="flex items-center cursor-pointer relative select-none"
@@ -80,7 +86,6 @@ const TopBar = () => {
                       <AiOutlineImport />
                     </div>
                     <div className="whitespace-nowrap capitalize">sign out</div>
-
                   </div>
                 </div>
               )}
