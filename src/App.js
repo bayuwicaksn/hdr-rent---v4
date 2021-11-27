@@ -10,6 +10,7 @@ import Customer from "./Pages/Customer";
 import Settings from "./Pages/Settings";
 import TopBar from "./Parts/TopBar/TopBar";
 import { SidebarProvider } from "./Context/SidebarContext";
+import ProdukDetail from "./Pages/ProdukDetail";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/products" component={Products} />
                 <Route path="/order" component={Order} />
                 <Route path="/tambah-produk" component={TambahProduk} />
+                <Route path="/produk-detail" component={ProdukDetail} />
                 <Route path="/customer" component={Customer} />
                 <Route path="/settings" component={Settings} />
               </Switch>
