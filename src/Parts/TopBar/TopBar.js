@@ -80,6 +80,7 @@ const TopBar = () => {
                       <AiOutlineImport />
                     </div>
                     <div className="whitespace-nowrap capitalize">sign out</div>
+
                   </div>
                 </div>
               )}
