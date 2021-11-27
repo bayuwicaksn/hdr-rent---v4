@@ -1,171 +1,94 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import {} from "react-icons";
+import {
+  AiOutlineBell,
+  AiOutlineComment,
+  AiOutlineImport,
+  AiOutlineUser,
+} from "react-icons/ai";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 const TopBar = () => {
-  const [show, setShow] = useState(false);
-  const [profile, setProfile] = useState(false);
+  const dropDownRef = useRef(null);
+  const [toggle, seToggle] = useState(false);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (!dropDownRef.current.contains(e.target)) {
+        seToggle(!toggle);
+      }
+    };
+
+    if (toggle) {
+      window.addEventListener("click", handleClick);
+    }
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, [toggle]);
+
+  const handleClick = () => {
+    seToggle(!toggle);
+  };
 
   return (
-    <div>
-      <nav className="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-10">
-        <div className=" lg:flex w-full pr-6">
-          <div className="w-1/2 h-full lg:flex items-center pl-6 pr-24">
-            {/*  */}
+    <nav className="bg-white shadow sticky top-0 h-16 z-30 px-10">
+      <div className="flex h-full justify-end items-center">
+        <div className="flex h-full items-center text-gray-500">
+          <div className="w-20 flex items-center justify-center border-l h-full text-2xl">
+            <div className="relative">
+              <AiOutlineBell />
+              <div class="w-2 h-2 rounded-full bg-red-400 border border-white absolute top-0 right-0.5"></div>
+            </div>
           </div>
-          <div className="w-1/2 lg:flex">
-            <div className="w-full flex items-center pl-8 justify-end">
-              <div className="h-full w-20 flex items-center justify-center border-r border-l">
-                <div className="relative cursor-pointer text-gray-600">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-bell"
-                    width={28}
-                    height={28}
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-                    <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
-                  </svg>
-                  <div className="w-2 h-2 rounded-full bg-red-400 border border-white absolute inset-0 mt-1 mr-1 m-auto" />
-                </div>
-              </div>
-              <div className="h-full w-20 flex items-center justify-center border-r mr-4 cursor-pointer text-gray-600">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-messages"
-                  width={28}
-                  height={28}
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
-                  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
-                </svg>
-              </div>
-              <div
-                className="flex items-center relative cursor-pointer"
-                onClick={() => setProfile(!profile)}
-              >
-                <div className="rounded-full">
-                  {profile ? (
-                    <ul className="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 ">
-                      <li className="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
-                        <div className="flex items-center">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="icon icon-tabler icon-tabler-user"
-                            width={18}
-                            height={18}
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <circle cx={12} cy={7} r={4} />
-                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                          </svg>
-                          <span className="text-sm ml-2">My Profile</span>
-                        </div>
-                      </li>
-                      <li className="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mt-2">
-                        <div className="flex items-center">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="icon icon-tabler icon-tabler-logout"
-                            width={20}
-                            height={20}
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-                            <path d="M7 12h14l-3 -3m0 6l3 -3" />
-                          </svg>
-                          <span className="text-sm ml-2">Sign out</span>
-                        </div>
-                      </li>
-                    </ul>
-                  ) : (
-                    ""
-                  )}
-                  <div className="relative">
-                    <img
-                      className="rounded-full h-10 w-10 object-cover"
-                      src="https://scontent.fcgk9-1.fna.fbcdn.net/v/t1.18169-9/21765196_1653621021324099_83594163735009523_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeEQF_mzs3__yS3V5BkC_t69LovIac3jTVEui8hpzeNNUYYebDGE26LNC5eSqr31tEZ_WOw3Rvxx1WZUUe8KkzlA&_nc_ohc=Om0biMaAIVgAX9j0yM9&_nc_ht=scontent.fcgk9-1.fna&oh=4fec84d00a25c0ea9781eb2d96f9f501&oe=61C0973B"
-                      alt="avatar"
-                    />
-                    <div className="w-2 h-2 rounded-full bg-green-400 border border-white absolute inset-0 mb-0 mr-0 m-auto" />
+          <div className="w-20 flex items-center justify-center border-l h-full text-2xl">
+            <AiOutlineComment />
+          </div>
+          {/* profile menu */}
+          <div className="flex pl-5 items-center justify-center border-l h-full gap-x-3">
+            <div className="relative bg-green-300">
+              <img
+                src="https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1481&q=80"
+                alt="john doe"
+                width="35"
+                className="rounded-full shadow"
+              />
+
+              <div class="w-2.5 h-2.5 rounded-full border bg-green-500 border-white absolute top-0 -right-1"></div>
+            </div>
+            <div
+              className="flex items-center cursor-pointer relative select-none"
+              onClick={handleClick}
+              ref={dropDownRef}
+            >
+              <div>John Doe</div>
+              <MdOutlineKeyboardArrowDown className="text-lg mt-0.5" />
+              {/* hidden menu */}
+              {toggle && (
+                <div className="absolute w-44 flex flex-col gap-y-1 top-14 right-0 bg-white px-5 py-3 shadow rounded">
+                  <div className="flex gap-x-3 items-center">
+                    <div>
+                      <AiOutlineUser />
+                    </div>
+                    <div className="whitespace-nowrap capitalize">
+                      my profile
+                    </div>
+                  </div>
+                  <div className="flex gap-x-3 items-center">
+                    <div>
+                      <AiOutlineImport />
+                    </div>
+                    <div className="whitespace-nowrap capitalize">sign out</div>
+
                   </div>
                 </div>
-                <p className="text-gray-800 text-sm mx-3">Kristian Kukuh</p>
-                <div className="cursor-pointer text-gray-600">
-                  <svg
-                    aria-haspopup="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-chevron-down"
-                    width={20}
-                    height={20}
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
-        <div
-          className="text-gray-600 mr-8 visible relative"
-          onClick={() => setShow(!show)}
-        >
-          {show ? (
-            " "
-          ) : (
-            <svg
-              aria-label="Main Menu"
-              aria-haspopup="true"
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-menu cursor-pointer"
-              width={30}
-              height={30}
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" />
-              <line x1={4} y1={8} x2={20} y2={8} />
-              <line x1={4} y1={16} x2={20} y2={16} />
-            </svg>
-          )}
-        </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

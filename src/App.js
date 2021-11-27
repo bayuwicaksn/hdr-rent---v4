@@ -13,7 +13,7 @@ import TopBar from "./Parts/TopBar/TopBar";
 function App() {
   return (
     <Router>
-      <div className="flex flex-no-wrap bg-gray-200">
+      <div className="flex bg-gray-200">
         <Sidebar />
         <div className="w-full">
           <TopBar />
