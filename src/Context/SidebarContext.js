@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const SidebarContext = React.createContext();
 const ToggleSidebarContext = React.createContext();
@@ -13,6 +13,12 @@ export function useToggleSidebar() {
 
 export function SidebarProvider({ children }) {
   const [sidebarToggle, setSidebarToggle] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth < 1000) {
+      setSidebarToggle(true);
+    }
+  }, []);
 
   function toggleSidebar() {
     setSidebarToggle(!sidebarToggle);

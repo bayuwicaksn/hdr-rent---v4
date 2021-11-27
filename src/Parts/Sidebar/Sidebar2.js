@@ -1,17 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import * as AiIcons from "react-icons/ai";
-import { useSidebar, useToggleSidebar } from "../../Context/SidebarContext";
-import { useEffect } from "react";
+import { useSidebar } from "../../Context/SidebarContext";
 
 export default function Index() {
   const sidebartoggle = useSidebar();
-  const toggleSidebar = useToggleSidebar();
-  useEffect(() => {
-    if (window.innerWidth < 1000) {
-      toggleSidebar();
-    }
-  }, []);
+
   return (
     <div className="sticky top-0 h-screen shadow bg-gray-900">
       <div
