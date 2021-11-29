@@ -63,6 +63,14 @@ export default function ProdukList2() {
               <button className="bg-gray-200 transition duration-150 ease-in-out focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray hover:bg-gray-300 rounded text-indigo-700 px-5 h-8 flex items-center text-sm">
                 Download All
               </button>
+              <Link to="/produk-detail">
+                <div className="text-white ml-4 cursor-pointer focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 w-8 h-8 rounded flex items-center justify-center">
+                  <i className="text-3xl">
+                    <AiIcons.AiOutlinePlus />
+                  </i>
+                </div>
+              </Link>
+
               <Link to="/tambah-produk">
                 <div className="text-white ml-4 cursor-pointer focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 w-8 h-8 rounded flex items-center justify-center">
                   <i className="text-3xl">
