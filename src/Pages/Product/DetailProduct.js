@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ProdukDetailSettings from "./ProdukDetailSettings";
+import ProdukDetailHistory from "./ProdukDetailHistory";
 import ProdukInventory from "../../Parts/InventoryList/ProdukInventory";
 
 const ProdukDetail = () => {
