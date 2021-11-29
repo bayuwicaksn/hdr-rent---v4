@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ProdukInventory from "../Parts/InventoryList/ProdukInventory";
+import ProdukDetailSettings from "./ProdukDetailSettings";
+import ProdukDetailHistory from "./ProdukDetailHistory";
 
 const ProdukDetail = () => {
   const [activeStatus, setActiveStatus] = useState(1);
@@ -29,6 +31,7 @@ const ProdukDetail = () => {
                 <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
               )}
             </li>
+
             <li
               onClick={() => setActiveStatus(2)}
               className={
@@ -37,7 +40,7 @@ const ProdukDetail = () => {
                   : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
               }
             >
-              <span className="mb-3 cursor-pointer">Variasi</span>
+              <span className="mb-3 cursor-pointer">Settings</span>
               {activeStatus === 2 && (
                 <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
               )}
@@ -50,34 +53,8 @@ const ProdukDetail = () => {
                   : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
               }
             >
-              <span className="mb-3 cursor-pointer">Harga</span>
-              {activeStatus === 3 && (
-                <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
-              )}
-            </li>
-            <li
-              onClick={() => setActiveStatus(4)}
-              className={
-                activeStatus === 4
-                  ? "text-sm text-indigo-700 flex flex-col justify-between border-indigo-700 pt-3 rounded-t mr-10 font-normal"
-                  : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
-              }
-            >
-              <span className="mb-3 cursor-pointer">Settings</span>
-              {activeStatus === 4 && (
-                <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
-              )}
-            </li>
-            <li
-              onClick={() => setActiveStatus(5)}
-              className={
-                activeStatus === 5
-                  ? "text-sm text-indigo-700 flex flex-col justify-between border-indigo-700 pt-3 rounded-t mr-10 font-normal"
-                  : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
-              }
-            >
               <span className="mb-3 cursor-pointer">History</span>
-              {activeStatus === 5 && (
+              {activeStatus === 3 && (
                 <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
               )}
             </li>
@@ -87,10 +64,12 @@ const ProdukDetail = () => {
       <div className="my-10">
         {activeStatus === 1 ? <ProdukInventory /> : ""}
       </div>
-      <div className="my-10">{activeStatus === 2 ? "Variasi" : ""}</div>
-      <div className="my-10">{activeStatus === 3 ? "Harga" : ""}</div>
-      <div className="my-10">{activeStatus === 4 ? "Settings" : ""}</div>
-      <div className="my-10">{activeStatus === 5 ? "History" : ""}</div>
+      <div className="my-10">
+        {activeStatus === 2 ? <ProdukDetailSettings /> : ""}
+      </div>
+      <div className="my-10">
+        {activeStatus === 3 ? <ProdukDetailHistory /> : ""}
+      </div>
     </div>
   );
 };
