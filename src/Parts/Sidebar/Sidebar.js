@@ -3,7 +3,9 @@ import { SidebarData } from "./SidebarData";
 import * as AiIcons from "react-icons/ai";
 import { useSidebar } from "../../Context/SidebarContext";
 
-export default function Index() {
+import React from "react";
+
+const Sidebar = () => {
   const sidebartoggle = useSidebar();
 
   return (
@@ -37,7 +39,7 @@ export default function Index() {
               activeClassName="bg-indigo-700 "
             >
               <i className="text-2xl">{item.icon}</i>
-              <p className={`text-base ${sidebartoggle ? "hidden" : "block"}`}>
+              <p className={`${sidebartoggle ? "hidden" : "block"}`}>
                 {item.title}
               </p>
             </NavLink>
@@ -46,4 +48,6 @@ export default function Index() {
       </div>
     </div>
   );
-}
+};
+
+export default Sidebar;

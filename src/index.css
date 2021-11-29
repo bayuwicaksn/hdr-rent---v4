@@ -3,3 +3,8 @@
 @tailwind components;
 
 @tailwind utilities;
+
+/* input style */
+._input {
+  @apply w-full p-3 mt-3 text-sm border-gray-200 rounded focus:border-transparent focus:ring-0 focus:outline-indigo placeholder-gray-400;
+}
