@@ -1,16 +1,16 @@
 import React from "react";
-import "./App.css";
-import Sidebar from "./Parts/Sidebar/Sidebar2";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import TopBar from "./Parts/TopBar/TopBar";
+import Sidebar from "./Parts/Sidebar/Sidebar";
 import Home from "./Pages/Overview";
-import Products from "./Pages/Products";
+import Products from "./Pages/Product/Products";
+import AddProduct from "./Pages/Product/AddProduct";
+import ProdukDetail from "./Pages/Product/DetailProduct";
 import Order from "./Pages/Order";
-import TambahProduk from "./Pages/TambahProduk";
 import Customer from "./Pages/Customer";
 import Settings from "./Pages/Settings";
-import TopBar from "./Parts/TopBar/TopBar";
 import { SidebarProvider } from "./Context/SidebarContext";
-import ProdukDetail from "./Pages/ProdukDetail";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
       <Router>
         <div className="flex bg-gray-200">
           <Sidebar />
-          <div className="w-full">
+          <div className="w-full text-gray-700 text-sm">
             <TopBar />
             <div className="p-10 2xl:px-20">
               {/* Place your content here */}
@@ -26,7 +26,7 @@ function App() {
                 <Route path="/" exact component={Home} />
                 <Route path="/products" component={Products} />
                 <Route path="/order" component={Order} />
-                <Route path="/tambah-produk" component={TambahProduk} />
+                <Route path="/add-product" component={AddProduct} />
                 <Route path="/produk-detail" component={ProdukDetail} />
                 <Route path="/customer" component={Customer} />
                 <Route path="/settings" component={Settings} />

@@ -1,13 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {} from "react-icons";
-import {
-  AiOutlineBell,
-  AiOutlineComment,
-  AiOutlineImport,
-  AiOutlineMenu,
-  AiOutlineUser,
-} from "react-icons/ai";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import * as AiIcons from "react-icons/ai";
+import * as MdIcons from "react-icons/md";
 import { useToggleSidebar } from "../../Context/SidebarContext";
 
 const TopBar = () => {
@@ -39,17 +33,17 @@ const TopBar = () => {
     <nav className="bg-white shadow sticky top-0 h-16 z-30 px-5 lg:px-10">
       <div className="flex h-full justify-between items-center">
         <div className="text-xl cursor-pointer" onClick={toggleSidebar}>
-          <AiOutlineMenu />
+          <AiIcons.AiOutlineMenu />
         </div>
-        <div className="flex h-full items-center text-gray-500">
+        <div className="flex h-full items-center">
           <div className="w-20 flex items-center justify-center border-l h-full text-2xl">
             <div className="relative">
-              <AiOutlineBell />
+              <AiIcons.AiOutlineBell />
               <div className="w-2 h-2 rounded-full bg-red-400 border border-white absolute top-0 right-0.5"></div>
             </div>
           </div>
           <div className="w-20 flex items-center justify-center border-l h-full text-2xl">
-            <AiOutlineComment />
+            <AiIcons.AiOutlineComment />
           </div>
           {/* profile menu */}
           <div className="flex pl-5 items-center justify-center border-l h-full gap-x-3">
@@ -69,13 +63,13 @@ const TopBar = () => {
               ref={dropDownRef}
             >
               <div>John Doe</div>
-              <MdOutlineKeyboardArrowDown className="text-lg mt-0.5" />
+              <MdIcons.MdOutlineKeyboardArrowDown className="text-lg mt-0.5" />
               {/* hidden menu */}
               {toggle && (
                 <div className="absolute w-44 flex flex-col gap-y-1 top-14 right-0 bg-white px-5 py-3 shadow rounded">
                   <div className="flex gap-x-3 items-center">
                     <div>
-                      <AiOutlineUser />
+                      <AiIcons.AiOutlineUser />
                     </div>
                     <div className="whitespace-nowrap capitalize">
                       my profile
@@ -83,7 +77,7 @@ const TopBar = () => {
                   </div>
                   <div className="flex gap-x-3 items-center">
                     <div>
-                      <AiOutlineImport />
+                      <AiIcons.AiOutlineImport />
                     </div>
                     <div className="whitespace-nowrap capitalize">sign out</div>
                   </div>
