@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProdukInventory from "../Parts/InventoryList/ProdukInventory";
+import ProdukInventory from "../../Parts/InventoryList/ProdukInventory";
 
 const ProdukDetail = () => {
   const [activeStatus, setActiveStatus] = useState(1);
