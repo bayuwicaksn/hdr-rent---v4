@@ -11,6 +11,7 @@ import Order from "./Pages/Order";
 import Customer from "./Pages/Customer";
 import Settings from "./Pages/Settings";
 import { SidebarProvider } from "./Context/SidebarContext";
+import AddCustomer from "./Pages/AddCustomer";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/produk-detail" component={ProdukDetail} />
                 <Route path="/customer" component={Customer} />
                 <Route path="/settings" component={Settings} />
+                <Route path="/add-customer" component={AddCustomer} />
               </Switch>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Search from "../Parts/Search";
 
 export default function Customer() {
@@ -9,6 +10,13 @@ export default function Customer() {
           <h4 className="text-2xl font-bold leading-tight text-gray-800 dark:text-gray-100">
             Customer
           </h4>
+          <div className="flex gap-x-3">
+            <Link to="/add-customer">
+              <button className="px-5 py-2 bg-indigo-700 text-white rounded hover:bg-indigo-600 transition-duration-150 ease-in-out">
+                Add Customer
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="my-10">
