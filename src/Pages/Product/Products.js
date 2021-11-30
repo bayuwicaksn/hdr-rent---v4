@@ -14,7 +14,7 @@ function Products() {
         {/* right menu */}
         <div className="flex gap-x-3">
           <button className="px-5 py-2 bg-gray-200 text-indigo-700 rounded hover:bg-gray-300 transition duration-150 ease-in-out">
-            Reserved
+            Download All
           </button>
           <Link to="/add-product">
             <button className="px-5 py-2 bg-indigo-700 text-white rounded hover:bg-indigo-600 transition-duration-150 ease-in-out">

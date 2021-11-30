@@ -22,18 +22,6 @@ const ProductList = () => {
                 <AiIcons.AiOutlineRight />
               </i>
             </div>
-            <div className="flex items-center gap-x-3">
-              <button className="px-5 py-2 bg-gray-200 text-indigo-700 rounded hover:bg-gray-300 transition duration-150 ease-in-out">
-                Download All
-              </button>
-              <Link to="/add-product">
-                <div className="p-2 bg-indigo-700 text-white rounded hover:bg-indigo-600 transition-duration-150 ease-in-out">
-                  <i className="text-xl">
-                    <AiIcons.AiOutlinePlus />
-                  </i>
-                </div>
-              </Link>
-            </div>
           </div>
         </div>
         {/* table */}
@@ -80,17 +68,17 @@ const ProductList = () => {
                   <td className="pr-6">{dataProduk.Brand}</td>
                   <td className="pr-6">{dataProduk.Harga}</td>
                   <td className="pr-6">{dataProduk.Qty}</td>
-                  <td className="">
-                    <div className="cursor-pointer">
-                      <Link to="/produk-detail">
-                        <button className="text-sm leading-none text-gray-600 py-3 px-3 mx-3 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">
-                          Detail
-                        </button>
-                      </Link>
-                      <button className="text-sm leading-none text-gray-600 py-3 px-3 mx-3 bg-red-300 rounded hover:bg-gray-200 focus:outline-none">
-                        Delete
+                  <td className="p-0">
+                    <Link to="/produk-detail">
+                      <button className="text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">
+                        Detail
                       </button>
-                    </div>
+                    </Link>
+                  </td>
+                  <td className="p-0">
+                    <button className="text-sm leading-none text-gray-600 py-3 px-5 bg-red-300 rounded hover:bg-gray-200 focus:outline-none">
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
