@@ -53,7 +53,6 @@ const ProductList = () => {
               <th className="font-normal text-left">Brand</th>
               <th className="font-normal text-left">Price</th>
               <th className="font-normal text-left">Qty</th>
-              <td className="font-normal text-left">More</td>
             </tr>
           </thead>
           <tbody>
@@ -81,9 +80,16 @@ const ProductList = () => {
                   <td className="pr-6">{dataProduk.Brand}</td>
                   <td className="pr-6">{dataProduk.Harga}</td>
                   <td className="pr-6">{dataProduk.Qty}</td>
-                  <td className="pr-8">
-                    <div className="text-2xl cursor-pointer">
-                      <AiIcons.AiOutlineMore />
+                  <td className="">
+                    <div className="cursor-pointer">
+                      <Link to="/produk-detail">
+                        <button className="text-sm leading-none text-gray-600 py-3 px-3 mx-3 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">
+                          Detail
+                        </button>
+                      </Link>
+                      <button className="text-sm leading-none text-gray-600 py-3 px-3 mx-3 bg-red-300 rounded hover:bg-gray-200 focus:outline-none">
+                        Delete
+                      </button>
                     </div>
                   </td>
                 </tr>
