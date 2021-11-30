@@ -6,7 +6,7 @@ import Sidebar from "./Parts/Sidebar/Sidebar";
 import Home from "./Pages/Overview";
 import Products from "./Pages/Product/Products";
 import AddProduct from "./Pages/Product/AddProduct";
-import ProdukDetail from "./Pages/Product/DetailProduct";
+import DetailProduct from "./Pages/Product/DetailProduct";
 import Order from "./Pages/Order";
 import Customer from "./Pages/Customer";
 import Settings from "./Pages/Settings";
@@ -28,7 +28,7 @@ function App() {
                 <Route path="/products" component={Products} />
                 <Route path="/order" component={Order} />
                 <Route path="/add-product" component={AddProduct} />
-                <Route path="/produk-detail" component={ProdukDetail} />
+                <Route path="/detail-product" component={DetailProduct} />
                 <Route path="/customer" component={Customer} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/add-customer" component={AddCustomer} />

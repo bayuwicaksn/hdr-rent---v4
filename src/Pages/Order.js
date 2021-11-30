@@ -19,87 +19,154 @@ function Order() {
 
   return (
     <div>
-      <div className="bg-white py-6 lg:py-8">
-        <div className="container px-6 mx-auto flex flex-col md:flex-row items-start md:items-center justify-between">
-          <div>
-            <h4 className="text-2xl font-bold leading-tight text-gray-800 dark:text-gray-100">
-              Order
-            </h4>
-          </div>
-          <div className="mt-6 md:mt-0">
-            <button className="mr-3 bg-gray-200 dark:bg-gray-700 focus:outline-none transition duration-150 ease-in-out rounded hover:bg-gray-300 text-indigo-700 dark:hover:bg-gray-600 dark:text-indigo-600 px-5 py-2 text-sm">
-              Reserved
-            </button>
-            <button className="transition focus:outline-none duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">
-              Pick up
-            </button>
-          </div>
+      {/* header */}
+      <div className="p-8 flex items-center justify-between bg-white rounded shadow">
+        {/* page title */}
+        <div>
+          <h4 className="text-2xl font-bold">Order</h4>
+        </div>
+        {/* right menu */}
+        <div className="flex gap-x-3">
+          <button className="px-5 py-2 bg-gray-200 text-indigo-700 rounded hover:bg-gray-300 transition duration-150 ease-in-out">
+            Reserved
+          </button>
+          <button className="px-5 py-2 bg-indigo-700 text-white rounded hover:bg-indigo-600 transition-duration-150 ease-in-out">
+            Pick up
+          </button>
         </div>
       </div>
-      <div className="flex flex-row items-center w-full my-8">
-        <div className="w-full sm:w-1/2	 h-64  shadow bg-white p-6 mr-2">
+      {/* first section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 my-8 gap-3">
+        {/* customer & date section */}
+        <div className="p-6 bg-white shadow rounded">
           <div>
-            <label className="text-gray-800 dark:text-gray-100 text-sm font-bold leading-tight tracking-normal">
-              Customer
-            </label>
-            <div className="w-full flex item-center my-4">
+            <label>Search Customer</label>
+            <div className="w-full flex item-center my-3 gap-x-3">
               <div className="w-full">
                 <Search />
               </div>
-              <i className="text-3xl text-white ml-4 h-12 w-12 cursor-pointer focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded flex items-center justify-center">
-                <AiIcons.AiOutlinePlus />
-              </i>
+              <button className="px-5 py-2 bg-indigo-700 text-white rounded hover:bg-indigo-600 transition-duration-150 ease-in-out">
+                <AiIcons.AiOutlineUserAdd className="text-2xl" />
+              </button>
             </div>
           </div>
+
           <div>
-            <label className="text-gray-800 dark:text-gray-100 text-sm font-bold leading-tight tracking-normal">
-              Pilih Tanggal
-            </label>
-            <div className="relative mb-5 mt-2">
-              <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-calendar-event"
-                  width={20}
-                  height={20}
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <rect x={4} y={5} width={16} height={16} rx={2} />
-                  <line x1={16} y1={3} x2={16} y2={7} />
-                  <line x1={8} y1={3} x2={8} y2={7} />
-                  <line x1={4} y1={11} x2={20} y2={11} />
-                  <rect x={8} y={15} width={2} height={2} />
-                </svg>
+            <label>Pick Date</label>
+            <div className="relative">
+              <div
+                className="absolute right-0 top-1 flex items-center pr-3 h-full text-xl cursor-pointer"
+                onClick={() => setShowDate(!showDate)}
+              >
+                <AiIcons.AiOutlineCalendar />
               </div>
               <input
                 onClick={() => setShowDate(!showDate)}
+                type="text"
                 id="expiry"
-                className="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                className="_input"
                 placeholder="MM/YY"
                 value={date.startDate && `${date.startDate} / ${date.endDate}`}
                 autoComplete="off"
               />
+              {showDate && <DatePicker changeDate={memoizedChangeDate} />}
             </div>
-            {showDate && <DatePicker changeDate={memoizedChangeDate} />}
           </div>
         </div>
-
-        <div className="w-full sm:w-1/2	 h-64  shadow bg-white p-6 ml-2">
-          kanan
+        {/* detail customer */}
+        <div className="p-6 flex items-center justify-center text-base bg-white text-indigo-300 shadow rounded">
+          Please choose customer
         </div>
       </div>
-      <div className="w-full  my-6 shadow bg-white p-6">
+
+      {/* second section */}
+      <div className="my-6 p-6 pb-20 shadow rounded bg-white">
         <div>
           <Search />
         </div>
-        <div className="flex flex-row items-center w-full my-8">
-          {/* List item yg di pilih */}
+        <div className="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
+          <div>
+            <table className="w-full">
+              <tbody>
+                <tr className="h-16">
+                  <td className="pr-5">
+                    <div className="h-8 w-8">
+                      <img
+                        src="https://id.canon/media/image/2020/02/11/fff676b601864fd5bdfff7d8ff8fb658_EOS+850D+w+Kit+Lens+Front+Slant.png"
+                        alt="camera"
+                        className="h-full w-full rounded-full overflow-hidden shadow"
+                      />
+                    </div>
+                  </td>
+                  <td className="pr-5">
+                    <div className="text-base">
+                      EOS 850D (EF-S18-55mm f/4-5.6 IS STM)
+                    </div>
+                    <div className="font-semibold italic">#MC10023</div>
+                  </td>
+                  <td>
+                    <QtyBtn />
+                  </td>
+                </tr>
+                <tr className="h-16">
+                  <td className="pr-5">
+                    <div className="h-8 w-8">
+                      <img
+                        src="https://id.canon/media/image/2020/02/11/fff676b601864fd5bdfff7d8ff8fb658_EOS+850D+w+Kit+Lens+Front+Slant.png"
+                        alt="camera"
+                        className="h-full w-full rounded-full overflow-hidden shadow"
+                      />
+                    </div>
+                  </td>
+                  <td className="pr-5">
+                    <div className="text-base">
+                      EOS 850D (EF-S18-55mm f/4-5.6 IS STM)
+                    </div>
+                    <div className="font-semibold italic">#MC10023</div>
+                  </td>
+                  <td>
+                    <QtyBtn />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {/* total */}
+          <div className="w-full pt-2">
+            <div>
+              <h1 className="text-xl font-semibold leading-6 text-gray-800">
+                Order Summary
+              </h1>
+            </div>
+            <div className="flex mt-7 flex-col gap-y-3 text-lg">
+              <div className="flex justify-between items-center">
+                <p>Total items</p>
+                <p className="font-semibold ">20</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p>Total Charges</p>
+                <p className="font-semibold ">$2790</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p>Shipping charges</p>
+                <p className="font-semibold ">$90</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p>Sub total </p>
+                <p className="font-semibold ">$3520</p>
+              </div>
+            </div>
+            <div className="flex justify-between w-full items-center mt-20">
+              <p className="text-xl font-semibold leading-4 text-gray-800">
+                Estimated Total
+              </p>
+              <p className="text-lg font-semibold leading-4 text-gray-800">
+                $2900
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* <div className="flex flex-row items-center w-full my-8">
           <div className="w-full sm:w-1/2 p-6">
             <div className="bg-white">
               <div className="">
@@ -152,7 +219,6 @@ function Order() {
               </div>
             </div>
           </div>
-          {/* Order Summary */}
           <div className="w-full sm:w-1/2 p-6">
             <div>
               <h1 className="text-2xl font-semibold leading-6 text-gray-800">
@@ -196,7 +262,7 @@ function Order() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
