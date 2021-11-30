@@ -16,7 +16,7 @@ function DatePicker({ changeDate }) {
   }, [state, changeDate]);
 
   return (
-    <div>
+    <div className="absolute shadow-lg z-30">
       <DateRange
         editableDateInputs={true}
         onChange={(item) => {
