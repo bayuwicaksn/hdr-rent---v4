@@ -38,7 +38,7 @@ function Order() {
       {/* first section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 my-8 gap-3">
         {/* customer & date section */}
-        <div className="p-6 bg-white shadow rounded">
+        <div className="p-8 bg-white shadow rounded">
           <div>
             <label>Search Customer</label>
             <div className="w-full flex item-center my-3 gap-x-3">
@@ -74,13 +74,13 @@ function Order() {
           </div>
         </div>
         {/* detail customer */}
-        <div className="p-6 flex items-center justify-center text-base bg-white text-indigo-300 shadow rounded">
+        <div className="p-8 flex items-center justify-center text-base bg-white text-indigo-300 shadow rounded">
           Please choose customer
         </div>
       </div>
 
       {/* second section */}
-      <div className="my-6 p-6 pb-20 shadow rounded bg-white">
+      <div className="my-6 p-8 pb-20 shadow rounded bg-white">
         <div>
           <Search />
         </div>
@@ -99,33 +99,15 @@ function Order() {
                     </div>
                   </td>
                   <td className="pr-5">
-                    <div className="text-base">
+                    <div className="lg:text-base">
                       EOS 850D (EF-S18-55mm f/4-5.6 IS STM)
                     </div>
                     <div className="font-semibold italic">#MC10023</div>
                   </td>
                   <td>
-                    <QtyBtn />
-                  </td>
-                </tr>
-                <tr className="h-16">
-                  <td className="pr-5">
-                    <div className="h-8 w-8">
-                      <img
-                        src="https://id.canon/media/image/2020/02/11/fff676b601864fd5bdfff7d8ff8fb658_EOS+850D+w+Kit+Lens+Front+Slant.png"
-                        alt="camera"
-                        className="h-full w-full rounded-full overflow-hidden shadow"
-                      />
+                    <div className="flex justify-end">
+                      <QtyBtn />
                     </div>
-                  </td>
-                  <td className="pr-5">
-                    <div className="text-base">
-                      EOS 850D (EF-S18-55mm f/4-5.6 IS STM)
-                    </div>
-                    <div className="font-semibold italic">#MC10023</div>
-                  </td>
-                  <td>
-                    <QtyBtn />
                   </td>
                 </tr>
               </tbody>
@@ -134,11 +116,11 @@ function Order() {
           {/* total */}
           <div className="w-full pt-2">
             <div>
-              <h1 className="text-xl font-semibold leading-6 text-gray-800">
+              <h1 className="text-lg lg:text-xl font-semibold leading-6 text-gray-800">
                 Order Summary
               </h1>
             </div>
-            <div className="flex mt-7 flex-col gap-y-3 text-lg">
+            <div className="flex mt-7 flex-col gap-y-3 text-base lg:text-lg">
               <div className="flex justify-between items-center">
                 <p>Total items</p>
                 <p className="font-semibold ">20</p>
@@ -157,7 +139,7 @@ function Order() {
               </div>
             </div>
             <div className="flex justify-between w-full items-center mt-20">
-              <p className="text-xl font-semibold leading-4 text-gray-800">
+              <p className="text-lg lg:text-xl font-semibold leading-4 text-gray-800">
                 Estimated Total
               </p>
               <p className="text-lg font-semibold leading-4 text-gray-800">

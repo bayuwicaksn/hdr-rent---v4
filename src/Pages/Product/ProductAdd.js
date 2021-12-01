@@ -2,7 +2,7 @@ import React from "react";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const AddProduct = () => {
+const ProductAdd = () => {
   return (
     <div>
       {/* header */}
@@ -112,4 +112,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default ProductAdd;

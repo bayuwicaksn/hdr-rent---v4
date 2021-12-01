@@ -28,7 +28,7 @@ const Sidebar = () => {
           </p>
         </button>
       </div>
-      <div className="xl:mt-6 flex flex-col justify-start items-start px-4 space-y-3 pb-5">
+      <div className="lg:mt-6 flex flex-col justify-start items-start px-4 space-y-3 pb-5">
         {SidebarData.map((item, index) => {
           return (
             <NavLink

@@ -5,8 +5,8 @@ import TopBar from "./Parts/TopBar/TopBar";
 import Sidebar from "./Parts/Sidebar/Sidebar";
 import Home from "./Pages/Overview";
 import Products from "./Pages/Product/Products";
-import AddProduct from "./Pages/Product/AddProduct";
-import DetailProduct from "./Pages/Product/DetailProduct";
+import ProductAdd from "./Pages/Product/ProductAdd";
+import DetailProduct from "./Pages/Product/ProductDetail";
 import Order from "./Pages/Order";
 import Customer from "./Pages/Customer";
 import Settings from "./Pages/Settings";
@@ -19,15 +19,15 @@ function App() {
       <Router>
         <div className="flex bg-gray-200">
           <Sidebar />
-          <div className="w-full text-gray-700 text-sm">
+          <div className="w-full text-gray-700 text-sm overflow-x-hidden">
             <TopBar />
-            <div className="p-10 2xl:px-20">
+            <div className="py-10 px-5 lg:px-10 xl:px-20">
               {/* Place your content here */}
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/products" component={Products} />
                 <Route path="/order" component={Order} />
-                <Route path="/add-product" component={AddProduct} />
+                <Route path="/add-product" component={ProductAdd} />
                 <Route path="/detail-product" component={DetailProduct} />
                 <Route path="/customer" component={Customer} />
                 <Route path="/settings" component={Settings} />

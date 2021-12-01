@@ -1,22 +1,19 @@
 import React, { useState } from "react";
-import ProdukDetailSettings from "../ProdukDetailSettings";
-import ProdukDetailHistory from "../ProdukDetailHistory";
-import ProdukInventory from "../../Parts/InventoryList/ProdukInventory";
+import ProductDetailSettings from "./ProductDetailSettings";
+import ProductDetailHistory from "./ProductDetailHistory";
+import ProductInventory from "./ProductInventory";
 
-const ProdukDetail = () => {
+const ProductDetail = () => {
   const [activeStatus, setActiveStatus] = useState(1);
 
   return (
     <div>
-      <div className="bg-white py-6 lg:py-8">
-        <div className="container px-6 mx-auto flex flex-col md:flex-row items-start md:items-center justify-between">
-          <h4 className="text-2xl font-bold leading-tight text-gray-800 dark:text-gray-100">
-            EOS 850D
-          </h4>
+      <div className="bg-white p-8 pb-0 rounded shadow">
+        <div>
+          <h4 className="text-2xl font-bold">EOS 850D</h4>
         </div>
-      </div>
-      <div className="justify-between flex-wrap sm:block bg-white">
-        <div className="xl:w-full xl:mx-0 pl-5 pr-5 h-12">
+        {/* menu */}
+        <div className="mt-5">
           <ul className="flex">
             <li
               onClick={() => setActiveStatus(1)}
@@ -61,17 +58,18 @@ const ProdukDetail = () => {
           </ul>
         </div>
       </div>
+
       <div className="my-10">
-        {activeStatus === 1 ? <ProdukInventory /> : ""}
+        {activeStatus === 1 ? <ProductInventory /> : ""}
       </div>
       <div className="my-10">
-        {activeStatus === 2 ? <ProdukDetailSettings /> : ""}
+        {activeStatus === 2 ? <ProductDetailSettings /> : ""}
       </div>
       <div className="my-10">
-        {activeStatus === 3 ? <ProdukDetailHistory /> : ""}
+        {activeStatus === 3 ? <ProductDetailHistory /> : ""}
       </div>
     </div>
   );
 };
 
-export default ProdukDetail;
+export default ProductDetail;
