@@ -13,23 +13,23 @@ const QtyBtn = () => {
     }
   };
   return (
-    <div className="flex">
+    <div className="flex items-center lg:items-start gap-3 border rounded px-3">
       <span
         onClick={minusCount}
-        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 flex items-center justify-center select-none"
+        className="text-2xl select-none cursor-pointer"
       >
         -
       </span>
       <input
         id="counter"
-        className="border border-gray-300 text-center w-14 select-none"
+        className="border-none focus:border-transparent focus:ring-0 text-center w-12 select-none"
         type="text"
         value={count}
         onChange={(e) => e.target.value}
       />
       <span
         onClick={addCount}
-        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 flex items-center justify-center  select-none"
+        className="text-2xl select-none cursor-pointer text-indigo-700"
       >
         +
       </span>
