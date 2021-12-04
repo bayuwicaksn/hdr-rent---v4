@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as AiIcons from "react-icons/ai";
+import * as MdIcons from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const ProductAdd = () => {
+  const inputSelectRef = useRef(null);
+  const [inputSelectCategory, setInputSelectCategory] = useState(false);
+  const [product, setProduct] = useState({
+    name: "nikon",
+    qty: "",
+    pricing: "",
+    category: "",
+  });
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (!inputSelectRef.current.contains(e.target)) {
+        setInputSelectCategory(!inputSelectCategory);
+      }
+    };
+
+    if (inputSelectCategory) {
+      window.addEventListener("click", handleClick);
+    }
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, [inputSelectCategory]);
+
+  const handleClickCategory = (e) => {
+    const category = e.target.innerText;
+    setProduct({ ...product, category: category });
+  };
+  console.log(product);
+
   return (
     <div>
       {/* header */}
@@ -15,9 +47,9 @@ const ProductAdd = () => {
         <div className="flex gap-x-3"></div>
       </div>
       {/* section */}
-      <div className="my-8 bg-white rounded overflow-hidden shadow">
+      <div className="my-8 bg-white rounded  shadow">
         {/* title */}
-        <div>
+        <div className="rounded-t overflow-hidden">
           <p className="px-8 py-4 bg-gray-100 text-base font-semibold">
             Product Information
           </p>
@@ -54,15 +86,42 @@ const ProductAdd = () => {
                   id="pricing"
                 />
               </div>
-              <div>
+              <div className="relative">
                 <label htmlFor="category">Category</label>
-                <select className="_input">
-                  <option selected disabled value>
-                    Category
-                  </option>
-                  <option>Lighting</option>
-                  <option>Misc</option>
-                </select>
+                <input
+                  className="_input"
+                  type="text"
+                  placeholder="Search category..."
+                  id="category"
+                  onClick={() => setInputSelectCategory(!inputSelectCategory)}
+                  ref={inputSelectRef}
+                  value={product.category}
+                />
+                <div className="absolute right-4 bottom-3 text-lg text-gray-400">
+                  <MdIcons.MdOutlineKeyboardArrowDown />
+                </div>
+                {inputSelectCategory && (
+                  <div className="absolute w-full max-h-40 overflow-y-auto mt-3 bg-white shadow rounded">
+                    <div
+                      className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
+                      onClick={handleClickCategory}
+                    >
+                      Camera
+                    </div>
+                    <div
+                      className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
+                      onClick={handleClickCategory}
+                    >
+                      Lens
+                    </div>
+                    <div
+                      className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
+                      onClick={handleClickCategory}
+                    >
+                      Flash
+                    </div>
+                  </div>
+                )}
               </div>
             </form>
           </div>
