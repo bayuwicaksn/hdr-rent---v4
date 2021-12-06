@@ -7,7 +7,7 @@ import { CategoryData } from "../../Parts/Category/CategoryData";
 const ProductAdd = () => {
   const inputSelectRef = useRef(null);
   const [inputSelectCategory, setInputSelectCategory] = useState(false);
-  const [categories, setCategories] = useState(CategoryData);
+  const [categories] = useState(CategoryData);
   const [searchCategories, setSearchCategories] = useState([]);
   const [testVal, setTestVal] = useState("");
   const [product, setProduct] = useState({
@@ -46,15 +46,23 @@ const ProductAdd = () => {
           .toLowerCase()
           .includes(e.target.value.toLowerCase());
       });
-      setSearchCategories(result);
+      if (result.length === 0) {
+        setSearchCategories([
+          { category: `${e.target.value}`, status: "new data" },
+        ]);
+      } else {
+        setSearchCategories(result);
+      }
     } else {
       setSearchCategories(categories);
     }
     setTestVal(e.target.value);
   };
+
   useEffect(() => {
     setSearchCategories(categories);
   }, []);
+
   return (
     <div>
       {/* header */}
@@ -126,14 +134,20 @@ const ProductAdd = () => {
                 </div>
                 {inputSelectCategory && (
                   <div className="absolute w-full max-h-40 overflow-y-auto mt-3 bg-white shadow rounded">
-                    {searchCategories.map((category) => {
+                    {searchCategories.map((category, index) => {
                       return (
                         <div
                           className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
                           onClick={handleClickCategory}
-                          key={category.id}
+                          key={index}
                         >
-                          {category.category}
+                          {category.status ? (
+                            <div className="italic">
+                              Add : {category.category}
+                            </div>
+                          ) : (
+                            category.category
+                          )}
                         </div>
                       );
                     })}
