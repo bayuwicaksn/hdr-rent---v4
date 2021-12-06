@@ -2,12 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
 import { Link } from "react-router-dom";
+import { CategoryData } from "../../Parts/Category/CategoryData";
 
 const ProductAdd = () => {
   const inputSelectRef = useRef(null);
   const [inputSelectCategory, setInputSelectCategory] = useState(false);
+  const [categories, setCategories] = useState(CategoryData);
+  const [searchCategories, setSearchCategories] = useState([]);
+  const [testVal, setTestVal] = useState("");
   const [product, setProduct] = useState({
-    name: "nikon",
+    name: "",
     qty: "",
     pricing: "",
     category: "",
@@ -32,9 +36,25 @@ const ProductAdd = () => {
   const handleClickCategory = (e) => {
     const category = e.target.innerText;
     setProduct({ ...product, category: category });
+    setTestVal(category);
   };
-  console.log(product);
 
+  const handleSearchCategory = (e) => {
+    if (e.target.value.length > 0) {
+      const result = categories.filter((category) => {
+        return category.category
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase());
+      });
+      setSearchCategories(result);
+    } else {
+      setSearchCategories(categories);
+    }
+    setTestVal(e.target.value);
+  };
+  useEffect(() => {
+    setSearchCategories(categories);
+  }, []);
   return (
     <div>
       {/* header */}
@@ -93,33 +113,30 @@ const ProductAdd = () => {
                   type="text"
                   placeholder="Search category..."
                   id="category"
-                  onClick={() => setInputSelectCategory(!inputSelectCategory)}
+                  onClick={() => {
+                    setInputSelectCategory(!inputSelectCategory);
+                  }}
                   ref={inputSelectRef}
-                  value={product.category}
+                  value={testVal}
+                  autoComplete="off"
+                  onChange={handleSearchCategory}
                 />
                 <div className="absolute right-4 bottom-3 text-lg text-gray-400">
                   <MdIcons.MdOutlineKeyboardArrowDown />
                 </div>
                 {inputSelectCategory && (
                   <div className="absolute w-full max-h-40 overflow-y-auto mt-3 bg-white shadow rounded">
-                    <div
-                      className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
-                      onClick={handleClickCategory}
-                    >
-                      Camera
-                    </div>
-                    <div
-                      className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
-                      onClick={handleClickCategory}
-                    >
-                      Lens
-                    </div>
-                    <div
-                      className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
-                      onClick={handleClickCategory}
-                    >
-                      Flash
-                    </div>
+                    {searchCategories.map((category) => {
+                      return (
+                        <div
+                          className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
+                          onClick={handleClickCategory}
+                          key={category.id}
+                        >
+                          {category.category}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
