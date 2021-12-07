@@ -2,14 +2,42 @@ import React, { useState, useRef, useEffect } from "react";
 import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
 import { Link } from "react-router-dom";
-import { CategoryData } from "../../Parts/Category/CategoryData";
+import axios from "axios";
+import { useDropzone } from "react-dropzone";
 
 const ProductAdd = () => {
   const inputSelectRef = useRef(null);
   const [inputSelectCategory, setInputSelectCategory] = useState(false);
-  const [categories] = useState(CategoryData);
-  const [searchCategories, setSearchCategories] = useState([]);
-  const [testVal, setTestVal] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [searchCategories, setSearchCategories] = useState("");
+  const [files, setFiles] = useState([]);
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/*",
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
+  });
+
+  const thumbs = files.map((file) => (
+    <div key={file.name}>
+      <div>
+        <img src={file.preview} alt="" />
+      </div>
+    </div>
+  ));
+
+  useEffect(
+    () => () => {
+      files.forEach((file) => URL.revokeObjectURL(file.preview));
+    },
+    [files]
+  );
   const [product, setProduct] = useState({
     name: "",
     qty: "",
@@ -33,35 +61,28 @@ const ProductAdd = () => {
     };
   }, [inputSelectCategory]);
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_URL}/category`)
+      .then(function (response) {
+        setCategories(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   const handleClickCategory = (e) => {
     const category = e.target.innerText;
     setProduct({ ...product, category: category });
-    setTestVal(category);
+    setSearchCategories(category);
   };
 
-  const handleSearchCategory = (e) => {
-    if (e.target.value.length > 0) {
-      const result = categories.filter((category) => {
-        return category.category
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase());
-      });
-      if (result.length === 0) {
-        setSearchCategories([
-          { category: `${e.target.value}`, status: "new data" },
-        ]);
-      } else {
-        setSearchCategories(result);
-      }
-    } else {
-      setSearchCategories(categories);
-    }
-    setTestVal(e.target.value);
-  };
-
-  useEffect(() => {
-    setSearchCategories(categories);
-  }, []);
+  const filterCategory = categories.filter((category) => {
+    return category.category
+      .toLowerCase()
+      .includes(searchCategories.toLowerCase());
+  });
 
   return (
     <div>
@@ -115,7 +136,13 @@ const ProductAdd = () => {
                 />
               </div>
               <div className="relative">
-                <label htmlFor="category">Category</label>
+                <label>
+                  Category ({" "}
+                  <span className="cursor-pointer text-indigo-500">
+                    click here
+                  </span>{" "}
+                  to manage category )
+                </label>
                 <input
                   className="_input"
                   type="text"
@@ -125,29 +152,23 @@ const ProductAdd = () => {
                     setInputSelectCategory(!inputSelectCategory);
                   }}
                   ref={inputSelectRef}
-                  value={testVal}
+                  value={searchCategories}
                   autoComplete="off"
-                  onChange={handleSearchCategory}
+                  onChange={(e) => setSearchCategories(e.target.value)}
                 />
                 <div className="absolute right-4 bottom-3 text-lg text-gray-400">
                   <MdIcons.MdOutlineKeyboardArrowDown />
                 </div>
                 {inputSelectCategory && (
                   <div className="absolute w-full max-h-40 overflow-y-auto mt-3 bg-white shadow rounded">
-                    {searchCategories.map((category, index) => {
+                    {filterCategory.map((category, index) => {
                       return (
                         <div
                           className="hover:bg-indigo-400 p-3 hover:text-white cursor-pointer"
                           onClick={handleClickCategory}
                           key={index}
                         >
-                          {category.status ? (
-                            <div className="italic">
-                              Add : {category.category}
-                            </div>
-                          ) : (
-                            category.category
-                          )}
+                          {category.category}
                         </div>
                       );
                     })}
@@ -159,28 +180,31 @@ const ProductAdd = () => {
           {/* right */}
           <div className="grid content-end">
             <div className="w-full mx-auto">
-              <div className="w-full mb-8 py-8 flex flex-col items-center justify-center border border-dashed border-indigo-700 rounded-lg">
-                <div className="cursor-pointer mb-5 text-indigo-700 text-7xl">
-                  <AiIcons.AiOutlineCloudUpload />
-                </div>
-                <p className="text-base font-normal tracking-normal text-gray-800 dark:text-gray-100 text-center">
-                  Drag and drop here
-                </p>
-                <p className="text-base font-normal tracking-normal text-gray-800 dark:text-gray-100 text-center my-1">
-                  or
-                </p>
+              <div
+                className="w-full mb-8 py-8 flex flex-col items-center justify-center border border-dashed border-indigo-700 rounded-lg"
+                {...getRootProps()}
+              >
+                <div className="w-52 mb-5">{thumbs}</div>
+                {files.length === 0 && (
+                  <>
+                    <div className="mb-5 text-indigo-700 text-7xl">
+                      <AiIcons.AiOutlineCloudUpload />
+                    </div>
+                    <p className="text-base font-normal tracking-normal text-gray-800 dark:text-gray-100 text-center">
+                      Drag and drop here
+                    </p>
+                    <p className="text-base font-normal tracking-normal text-gray-800 dark:text-gray-100 text-center my-1">
+                      or
+                    </p>
+                  </>
+                )}
                 <label
                   htmlFor="fileUp"
                   className="cursor-pointer text-base font-normal tracking-normal text-indigo-700 dark:text-indigo-600 text-center"
                 >
                   Browse
                 </label>
-                <input
-                  type="file"
-                  className="hidden"
-                  name="fileUpload"
-                  id="fileUp"
-                />
+                <input {...getInputProps()} />
               </div>
             </div>
             {/* action */}

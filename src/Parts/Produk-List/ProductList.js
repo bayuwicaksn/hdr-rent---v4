@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Search from "../Search";
-import { ProdukLIstData } from "./ProdukListData";
+import { ProdukLIstData } from "../../DummyData/ProdukListData";
 import * as AiIcons from "react-icons/ai";
 
 const ProductList = () => {
